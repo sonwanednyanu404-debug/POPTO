@@ -39,7 +39,12 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           <span className="hidden sm:inline">🍋 {lang === 'en' ? "Maharashtra's #1 Lemon Marketplace" : "महाराष्ट्राचे #1 लिंबू मार्केटप्लेस"}</span>
           <span className="sm:hidden">🍋 POPTO</span>
-          <button
+          <div className="flex items-center gap-4">
+            <Link href="/app" className="flex items-center gap-1 text-lemon-300 hover:text-white transition-colors font-medium text-xs" id="mobile-app-nav-link">
+              <span>📱</span>
+              <span>{lang === 'en' ? 'Mobile App & QR' : 'मोबाईल ॲप & QR'}</span>
+            </Link>
+            <button
             onClick={() => setLang(lang === 'en' ? 'mr' : 'en')}
             className="flex items-center gap-1.5 hover:text-lemon-300 transition-colors"
             id="language-switcher"
@@ -49,6 +54,7 @@ export function Navbar() {
             <span className="text-white/60">|</span>
             <span className="text-white/70">{lang === 'en' ? 'मराठी' : 'EN'}</span>
           </button>
+          </div>
         </div>
       </div>
 
