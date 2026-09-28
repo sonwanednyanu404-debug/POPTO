@@ -1,20 +1,19 @@
 import { getDb } from './index';
+import { SCHEMA_SQL } from './schema-sql';
 import { hashSync } from 'bcryptjs';
 import { v4 as uuid } from 'uuid';
 import fs from 'fs';
 import path from 'path';
 
-async function seed() {
+export function runSeed(customDb?: any) {
   console.log('🍋 POPTO Database Seeding');
   console.log('══════════════════════════════');
 
-  const db = getDb();
+  const db = customDb || getDb();
 
   // Apply schema first if needed
   const schemaPath = path.join(__dirname, 'schema.sql');
-  if (fs.existsSync(schemaPath)) {
-    db.exec(fs.readFileSync(schemaPath, 'utf-8'));
-  }
+  try { db.exec(SCHEMA_SQL); } catch (e) {}
 
   // Check if already seeded
   const existingUsers = db.prepare('SELECT COUNT(*) as count FROM users').get() as { count: number };
@@ -315,10 +314,15 @@ async function seed() {
   console.log('  Farmer:   rajesh.patil@example.com / Farmer@123');
   console.log('');
 
-  db.close();
+  if (!customDb) { db.close(); }
 }
 
-seed().catch((err) => {
-  console.error('❌ Seed failed:', err);
-  process.exit(1);
-});
+if (typeof process !== "undefined" && process.argv && process.argv[1] && process.argv[1].includes("seed")) {
+  try {
+    runSeed();
+  } catch (err) {
+    console.error("❌ Seed failed:", err);
+    process.exit(1);
+  }
+}
+export default runSeed;

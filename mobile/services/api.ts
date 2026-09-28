@@ -2,7 +2,7 @@
 // Connects React Native / Expo to the shared POPTO Next.js API & SQLite DB
 import { Platform } from 'react-native';
 
-const DEFAULT_BASE_URL = 'https://reduce-its-tool-presents.trycloudflare.com/api';
+const DEFAULT_BASE_URL = 'https://popto.vercel.app/api';
 let dynamicApiUrl = process.env.EXPO_PUBLIC_API_URL || DEFAULT_BASE_URL;
 
 export const getApiUrl = () => dynamicApiUrl;
