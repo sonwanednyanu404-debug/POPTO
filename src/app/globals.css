@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-cream-50 text-charcoal-900 font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-leaf-700 text-white px-6 py-3 rounded-xl font-semibold text-sm 
+           hover:bg-leaf-800 active:scale-[0.98] transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-leaf-500 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-lemon-400 text-charcoal-900 px-6 py-3 rounded-xl font-semibold text-sm
+           hover:bg-lemon-500 active:scale-[0.98] transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-lemon-400 focus:ring-offset-2;
+  }
+  .btn-outline {
+    @apply border-2 border-leaf-700 text-leaf-700 px-6 py-3 rounded-xl font-semibold text-sm
+           hover:bg-leaf-700 hover:text-white active:scale-[0.98] transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply text-charcoal-600 px-4 py-2 rounded-lg font-medium text-sm
+           hover:bg-charcoal-50 transition-all duration-200;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-300;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-charcoal-200 bg-white
+           focus:outline-none focus:ring-2 focus:ring-leaf-500 focus:border-transparent
+           placeholder:text-charcoal-400 text-sm transition-all duration-200;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-green {
+    @apply badge bg-leaf-100 text-leaf-800;
+  }
+  .badge-yellow {
+    @apply badge bg-lemon-100 text-lemon-800;
+  }
+  .badge-red {
+    @apply badge bg-red-100 text-red-800;
+  }
+  .section-title {
+    @apply text-2xl md:text-3xl font-display font-bold text-charcoal-900;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-charcoal-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-charcoal-400;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  @apply bg-charcoal-100 rounded-lg animate-pulse;
+}
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Order timeline */
+.timeline-dot {
+  @apply w-4 h-4 rounded-full border-2 border-leaf-600 bg-white flex-shrink-0;
+}
+.timeline-dot.active {
+  @apply bg-leaf-600;
+}
+.timeline-line {
+  @apply w-0.5 h-8 bg-charcoal-200 ml-[7px];
+}
+.timeline-line.active {
+  @apply bg-leaf-600;
+}

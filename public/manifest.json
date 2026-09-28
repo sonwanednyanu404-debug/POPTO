@@ -1,0 +1,24 @@
+{
+  "name": "POPTO — Maharashtra Lemon Marketplace",
+  "short_name": "POPTO",
+  "description": "Maharashtra's Premier Lemon Marketplace. From Farmers to Buyers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF9F3",
+  "theme_color": "#235338",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/products/fresh-lemons-1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/products/fresh-lemons-1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
